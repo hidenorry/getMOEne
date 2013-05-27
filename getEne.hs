@@ -7,14 +7,10 @@ import Text.Regex.Posix
 num = 5
 
 occ :: String -> String
-occ =  unlines . take num . filter (\ l -> if l =~ "^.* [1|2] .*$"
-                                           then True
-                                           else False) . lines
+occ =  unlines . take num . filter (=~ "^.* [1|2] .*$") . lines
 
 uno :: String -> String
-uno =  unlines . reverse . take num . reverse . filter (\ l -> if (l =~ "^.* 0 .*$")
-                                                               then True
-                                                               else False) . lines
+uno =  unlines . reverse . take num . reverse . filter (=~ "^.* 0 .*$") . lines
 
 spin :: String -> String -> (String, String)
 spin s r = case matchRegexAll (mkRegex r) s of
