@@ -15,7 +15,7 @@ uno =  unlines . reverse . take num . reverse . filter (=~ "^.* 0 .*$") . lines
 spin :: String -> String -> (String, String)
 spin s r = case matchRegexAll (mkRegex r) s of
             Just (pre,_,aft,_) ->  (pre, aft)
-            otherwise ->  ("","")
+            otherwise ->  (s,"")
 
 alpha :: String -> String
 alpha s = fst (spin s "Beta MOs")
